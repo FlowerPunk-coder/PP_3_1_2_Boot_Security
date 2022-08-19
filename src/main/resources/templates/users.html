@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta name = "viewport" content = "width=device-width, initial-scale = 1">
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<table class="users" border="1">
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>Логин</th>
+        <th>Имя</th>
+        <th>Фамилия</th>
+        <th>Email</th>
+        <th>Статус</th>
+        <th>Права</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr  th:each="user : ${users}">
+        <td th:text="${user.id}">Id</td>
+        <td th:text="${user.username}">username</td>
+        <td th:text="${user.name}">name</td>
+        <td th:text="${user.lastName}">lastName</td>
+        <td th:text="${user.email}">email</td>
+        <td th:text="${user.getStatus()}">status</td>
+        <td>
+            <ul th:each="role : ${user.getRoles()}">
+                <li>
+                    <p th:text="${role.getTitle()}">role</p>
+                </li>
+            </ul>
+        </td>
+        <td><a th:href="@{/admin/edit(id=${user.id})}" href="add.html">
+            <img alt="edit-user" th:src="@{/images/edit.png}"/></a>
+        </td>
+        <td><form th:action="@{/admin/del/{id}(id=${user.id})}" th:method="delete">
+           <button type="submit"><img alt="del-user" th:src="@{/images/del.png}"/></button></form> </td>
+    </tr>
+    </tbody>
+</table>
+<div>
+    <a th:href="@{/admin/user}" href="add.html"><img alt="add-user" th:src="@{/images/add.png}"/></a>
+</div>
+<br>
+<div>
+    <a th:href="@{/logout}" href="index.html">
+        <img alt="logout" th:src="@{/images/back.png}"/></a>
+</div>
+
+
+</body>
+</html>
