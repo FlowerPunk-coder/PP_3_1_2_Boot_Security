@@ -24,7 +24,6 @@ public class UserController {
 
     @GetMapping("/logout")
     public String logout() {
-
         return "index";
     }
 }

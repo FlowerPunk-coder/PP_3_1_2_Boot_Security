@@ -16,9 +16,7 @@ public class Role implements GrantedAuthority {
     private long id;
     @Column(unique = true, nullable = false)
     @Enumerated(EnumType.STRING)
-    private RoleName role = RoleName.ROLE_USER;
-    @ManyToMany(mappedBy = "roles")
-    private Set<User> users;
+    private RoleName role;
 
     public Role() {}
 
@@ -49,14 +47,6 @@ public class Role implements GrantedAuthority {
 
     public String getTitle() {
        return role.getTitle();
-    }
-
-    public Set<User> getUsers() {
-        return users;
-    }
-
-    public void setUsers(Set<User> users) {
-        this.users = users;
     }
 
     @Override
