@@ -54,7 +54,7 @@ public class AdminController {
 
     @PostMapping("/update")
     public String editUser(User user) {
-        userService.saveUser(user);
+        userService.updateUser(user);
         return "redirect:/admin/";
     }
 
