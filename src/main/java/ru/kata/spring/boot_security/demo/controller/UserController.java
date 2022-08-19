@@ -14,14 +14,11 @@ public class UserController {
     public UserController(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
-
-
     @GetMapping("/user")
     public String getUserPage(Model model, Authentication authentication) {
         model.addAttribute("user", userRepository.findByUsername(authentication.getName()));
         return "user";
     }
-
     @GetMapping("/logout")
     public String logout() {
         return "index";

@@ -12,6 +12,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "users")
+@NamedEntityGraph(name = "User.role", attributeNodes = @NamedAttributeNode("roles"))
 public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,7 +30,7 @@ public class User implements UserDetails {
     @Column
     @Enumerated(value = EnumType.ORDINAL)
     private Status status;
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.LAZY)
     private Set<Role> roles;
 
     public User() {

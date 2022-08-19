@@ -5,7 +5,6 @@ import ru.kata.spring.boot_security.demo.model.enums.RoleName;
 
 import javax.persistence.*;
 import java.util.Objects;
-import java.util.Set;
 
 @Entity
 @Table(name = "roles")
