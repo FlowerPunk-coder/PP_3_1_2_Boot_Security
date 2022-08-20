@@ -17,6 +17,7 @@
 		<java.version>11</java.version>
 		<spring-boot-starter.version>2.6.4</spring-boot-starter.version>
 		<mysql-connector-java.version>8.0.30</mysql-connector-java.version>
+		<liquibase-core.version>4.14.0</liquibase-core.version>
 	</properties>
 
 	<dependencies>
@@ -58,6 +59,13 @@
 			<artifactId>spring-security-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+
+		<dependency>
+			<groupId>org.liquibase</groupId>
+			<artifactId>liquibase-core</artifactId>
+			<version>${liquibase-core.version}</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>
