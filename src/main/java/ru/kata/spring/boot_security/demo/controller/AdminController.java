@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import ru.kata.spring.boot_security.demo.model.User;
 import ru.kata.spring.boot_security.demo.model.enums.RoleName;
 import ru.kata.spring.boot_security.demo.model.enums.Status;
-import ru.kata.spring.boot_security.demo.repository.RoleRepository;
+import ru.kata.spring.boot_security.demo.service.RoleService;
 import ru.kata.spring.boot_security.demo.service.UserService;
 
 @Controller
@@ -14,11 +14,11 @@ import ru.kata.spring.boot_security.demo.service.UserService;
 public class AdminController {
 
     private final UserService userService;
-    private final RoleRepository roleRepository;
+    private final RoleService roleService;
 
-    public AdminController(UserService userService, RoleRepository roleRepository) {
+    public AdminController(UserService userService, RoleService roleService) {
         this.userService = userService;
-        this.roleRepository = roleRepository;
+        this.roleService = roleService;
     }
 
     @GetMapping("/")
@@ -32,7 +32,7 @@ public class AdminController {
     public String getAddPage(Model model) {
         model.addAttribute("statuses", Status.values());
         model.addAttribute("user", new User());
-        model.addAttribute("roles", roleRepository.findAll());
+        model.addAttribute("roles", roleService.findAllRoles());
         return "add";
     }
 
@@ -40,7 +40,7 @@ public class AdminController {
     public String getEditPage(@RequestParam("id") long id, Model model) {
         model.addAttribute("user", userService.getUserById(id));
         model.addAttribute("statuses", Status.values());
-        model.addAttribute("roles", roleRepository.findAll());
+        model.addAttribute("roles", roleService.findAllRoles());
         return "edit";
     }
 
