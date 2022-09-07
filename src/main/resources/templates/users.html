@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta name = "viewport" content = "width=device-width, initial-scale = 1">
+    <meta name="viewport" content="width=device-width, initial-scale = 1">
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
@@ -21,7 +21,7 @@
     </tr>
     </thead>
     <tbody>
-    <tr  th:each="user : ${users}">
+    <tr th:each="user : ${users}">
         <td th:text="${user.id}">Id</td>
         <td th:text="${user.username}">username</td>
         <td th:text="${user.name}">name</td>
@@ -38,8 +38,11 @@
         <td><a th:href="@{/admin/edit(id=${user.id})}" href="add.html">
             <img alt="edit-user" th:src="@{/images/edit.png}"/></a>
         </td>
-        <td><form th:action="@{/admin/del/{id}(id=${user.id})}" th:method="delete">
-           <button type="submit"><img alt="del-user" th:src="@{/images/del.png}"/></button></form> </td>
+        <td>
+            <form th:action="@{/admin/del/{id}(id=${user.id})}" th:method="delete">
+                <button type="submit"><img alt="del-user" th:src="@{/images/del.png}"/></button>
+            </form>
+        </td>
     </tr>
     </tbody>
 </table>
@@ -51,7 +54,5 @@
     <a th:href="@{/logout}" href="index.html">
         <img alt="logout" th:src="@{/images/back.png}"/></a>
 </div>
-
-
 </body>
 </html>

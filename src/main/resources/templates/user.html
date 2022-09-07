@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Spring Security Example</title>
@@ -7,13 +7,13 @@
 </head>
 <body>
 <div th:object="${user}">
-    <p th:utext="'Логин: ' + *{get().username}">sfsd</p>
-    <p th:utext="'Имя: ' + *{get().name}">sfsd</p>
-    <p th:utext="'Фамилия: ' + *{get().lastName}">sfsd</p>
-    <p th:utext="'Эл.почта: ' + *{get().email}">sfsd</p>
-    <p th:utext="'Статус: ' + *{get().status}">sfsd</p>
+    <p th:utext="'Логин: ' + *{username}">sfsd</p>
+    <p th:utext="'Имя: ' + *{name}">sfsd</p>
+    <p th:utext="'Фамилия: ' + *{lastName}">sfsd</p>
+    <p th:utext="'Эл.почта: ' + *{email}">sfsd</p>
+    <p th:utext="'Статус: ' + *{status}">sfsd</p>
     <label for="roles">Права:</label>
-    <ul id="roles" th:each="role : *{get().getRoles()}">
+    <ul id="roles" th:each="role : *{getRoles()}">
         <li>
             <p th:text="${role.getTitle()}">role</p>
         </li>
@@ -23,6 +23,5 @@
     <a th:href="@{/logout}" href="index.html">
         <img alt="logout" th:src="@{/images/back.png}"/></a>
 </div>
-
 </body>
 </html>

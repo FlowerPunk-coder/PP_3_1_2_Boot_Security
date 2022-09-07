@@ -13,7 +13,6 @@ public class UserController {
 
     private final UserDetailsService userDetailsService;
 
-
     public UserController(UserDetailsService userDetailsService) {
         this.userDetailsService = userDetailsService;
     }

@@ -43,7 +43,8 @@
         <select id="roles" th:field="*{roles}" multiple maxlength="3">
             <option th:each="role : ${roles}"
                     th:text="${role.getTitle()}"
-                    th:value="${role.id}">Role</option>
+                    th:value="${role.id}">Role
+            </option>
         </select>
     </div>
     <div>
@@ -57,8 +58,6 @@
         <a th:href="@{/logout}" href="index.html">
             <img alt="logout" th:src="@{/images/back.png}"/></a>
     </div>
-
 </form>
-
 </body>
 </html>
